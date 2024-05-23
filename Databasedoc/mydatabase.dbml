@@ -1,0 +1,40 @@
+
+Table "authors" {
+  "AuthorID" int [pk, not null, increment]
+  "FirstName" varchar(50) [default: NULL]
+  "LastName" varchar(50) [default: NULL]
+}
+
+Table "books" {
+  "BookID" int [pk, not null, increment]
+  "Title" varchar(100) [default: NULL]
+  "AuthorID" int [default: NULL]
+  "Genre" varchar(50) [default: NULL]
+  "PublishedYear" int [default: NULL]
+
+  Indexes {
+    AuthorID [name: "AuthorID"]
+  }
+}
+
+Table "loans" {
+  "LoanID" int [pk, not null, increment]
+  "BookID" int [default: NULL]
+  "MemberID" int [default: NULL]
+  "LoanDate" date [default: NULL]
+  "ReturnDate" date [default: NULL]
+
+  Indexes {
+    BookID [name: "BookID"]
+    MemberID [name: "MemberID"]
+  }
+}
+
+Table "members" {
+  "MemberID" int [pk, not null, increment]
+  "FirstName" varchar(50) [default: NULL]
+  "LastName" varchar(50) [default: NULL]
+  "DateOfBirth" date [default: NULL]
+  "Email" varchar(100) [default: NULL]
+}
+
